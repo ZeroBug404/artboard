@@ -1,0 +1,14 @@
+.canvas-body{
+    text-align: center;
+    width: 100%;
+}
+
+.sample-canvas {
+  height: 80vh;
+  /* width: 325vh; */
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
