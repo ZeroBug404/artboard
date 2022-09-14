@@ -47,6 +47,74 @@ const Canvas = () => {
     link.click();
   };
 
+  const onAddArrow = () => {
+    drawArrow(editor.canvas, 100, 100, 150, 150);
+  };
+
+  function drawArrow(canvas, fromx, fromy, tox, toy) {
+    var angle = Math.atan2(toy - fromy, tox - fromx);
+
+    var headlen = 5; // arrow head size
+
+    // bring the line end back some to account for arrow head.
+    tox = tox - headlen * Math.cos(angle);
+    toy = toy - headlen * Math.sin(angle);
+
+    // calculate the points.
+    var points = [
+      {
+        x: fromx, // start point
+        y: fromy
+      },
+      {
+        x: fromx - (headlen / 4) * Math.cos(angle - Math.PI / 2),
+        y: fromy - (headlen / 4) * Math.sin(angle - Math.PI / 2)
+      },
+      {
+        x: tox - (headlen / 4) * Math.cos(angle - Math.PI / 2),
+        y: toy - (headlen / 4) * Math.sin(angle - Math.PI / 2)
+      },
+      {
+        x: tox - headlen * Math.cos(angle - Math.PI / 2),
+        y: toy - headlen * Math.sin(angle - Math.PI / 2)
+      },
+      {
+        x: tox + headlen * Math.cos(angle), // tip
+        y: toy + headlen * Math.sin(angle)
+      },
+      {
+        x: tox - headlen * Math.cos(angle + Math.PI / 2),
+        y: toy - headlen * Math.sin(angle + Math.PI / 2)
+      },
+      {
+        x: tox - (headlen / 4) * Math.cos(angle + Math.PI / 2),
+        y: toy - (headlen / 4) * Math.sin(angle + Math.PI / 2)
+      },
+      {
+        x: fromx - (headlen / 4) * Math.cos(angle + Math.PI / 2),
+        y: fromy - (headlen / 4) * Math.sin(angle + Math.PI / 2)
+      },
+      {
+        x: fromx,
+        y: fromy
+      }
+    ];
+
+    var pline = new fabric.Polyline(points, {
+      fill: "white",
+      stroke: "black",
+      opacity: 1,
+      strokeWidth: 2,
+      originX: "left",
+      originY: "top",
+      selectable: true
+    });
+
+    canvas.add(pline);
+
+    canvas.renderAll();
+  }
+
   return (
     <div className="canvas-body">
       <h1>Create your design</h1>
@@ -56,6 +124,7 @@ const Canvas = () => {
       <button onClick={removeObjectFromCanvas}>Remove</button>
       <input type="file" onChange={onAddBackground} />
       <input type="file" multiple onChange={onUploadImage} />
+      <button onClick={onAddArrow}>Add Arrow</button>
       <button onClick={downloadImage}>to Image</button>
       <FabricJSCanvas className="sample-canvas" onReady={onReady} />
     </div>

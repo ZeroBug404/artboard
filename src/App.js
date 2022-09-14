@@ -9,9 +9,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Canvas /> 
-      <Login />
-       <Signup /> */}
 
        <Routes>
           <Route path='/' element={<Login></Login>}></Route>

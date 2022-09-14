@@ -34,7 +34,7 @@ const Signup = () => {
             <h1>Sign Up</h1>
             <div class="social-container">
               <a href="#" class="social">
-              <FcGoogle/>
+              <FcGoogle onClick={() => signInWithGoogle()}/>
               </a>
             </div>
             <span>or use your account</span>
@@ -42,7 +42,7 @@ const Signup = () => {
             <input type="email" name="email" placeholder="Email" required />
             <input type="password" name="password" placeholder="Password" required />
             <a href="#">Forgot your password?</a>
-            <button onClick={() => signInWithGoogle()}>Sign In</button>
+            <button>Sign In</button>
           </form>
         </div>
       </div>

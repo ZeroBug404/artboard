@@ -67,7 +67,6 @@ const Login = () => {
             <input type="password" placeholder="Password" />
             
             <button>Sign In</button>
-            {/* <p>Already have an account? <Link to="/login" className='text-primary pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p> */}
           </form>
         </div>
         <div class="overlay-container">
